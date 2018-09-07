@@ -1,0 +1,62 @@
+.ads_parent{
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    width: 100%;
+    will-change: transform;
+    z-index: 2147483646;
+    transform: scale(0.85);
+    opacity: 0;
+    transition: transform 300ms ease-in-out, opacity 400ms ease-in-out;
+}
+
+.cls_loaded{
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+}
+
+.id_style{}
+.id_container{}
+
+.ads_agrandado{
+    position: relative;
+    margin: auto;
+}
+
+.ads_agrandado iframe{
+    border: 0;
+}
+
+
+.ads_agrandado .close{
+    position: absolute;
+    background: none;
+    border: 0;
+    max-width: 46px;
+    max-height: 46px;
+}
+
+.ads_agrandado .close.left_top{
+    left: 5px;
+    top: 5px;
+}
+
+.ads_agrandado .close.right_top{
+    right: 5px;
+    top: 5px;
+}
+
+.ads_agrandado .close.left_bottom{
+    left: 5px;
+    bottom: 5px;
+}
+
+.ads_agrandado .close.right_bottom{
+    right: 5px;
+    bottom: 5px;
+}
+
+.ads_parent.animation_close{
+    transform: translate3d(0, 100%, 0);
+    transition: transform 350ms ease-in-out;
+}

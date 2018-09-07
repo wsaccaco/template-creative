@@ -1,0 +1,51 @@
+.ads_parent{
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    transform: translate3d(0, 100%, 0);
+    will-change: transform;
+    z-index: 2147483646;
+}
+
+.ads_parent .link{
+    display: flex;
+}
+
+.ads_parent.ads_open{
+    transform: translate3d(0, 0, 0);
+    transition: transform 300ms ease-in;
+}
+
+.id_style{
+
+}
+
+.ads_movil{
+    position: relative;
+    margin: auto;
+}
+
+.ads_movil iframe{
+    border: 0;
+}
+
+.background{
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0, 0, 0, .5);
+    position: fixed;
+    right: 0;
+    top: 0;
+    will-change: opacity;
+    transition: opacity 300ms ease-in-out;
+    z-index: 2;
+}
+
+.background.hidden{
+    opacity: 0;
+}
+
+
+

@@ -1,0 +1,11 @@
+.ads-gec-expand-collapse .ads-iframe{
+    border: 0;
+}
+
+.ads-gec-expand-collapse .events-none{
+    pointer-events: none;
+}
+
+.ads-gec-expand-collapse .flex{
+    display: flex;
+}
