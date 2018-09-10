@@ -19,8 +19,8 @@ module.exports = (env) => {
       path: path.resolve(__dirname, 'dist'),
       filename: '[name].bundle.js',
     },
-      mode: env['run-prod'] ? 'production' : 'development',
-      watch: !env['run-prod'],
+    mode: env['run-prod'] ? 'production' : 'development',
+    watch: !env['run-prod'],
     module: {
       rules: [
         {
@@ -38,13 +38,13 @@ module.exports = (env) => {
         {
           test: /\.css$/,
           use: [
-            {loader: 'style-loader', options: { attrs: { class: 'gec_appnexus' } }},
+            {loader: 'style-loader', options: {attrs: {class: 'gec_appnexus'}}},
             {
               loader: 'css-loader', options: {
                 modules: true,
                 localIdentName: env['run-prod']
                   ? '[hash:base64]'
-                  : '[local]--[hash:base64:5]'
+                  : '[local]--[hash:base64:5]',
               },
             },
           ],
@@ -54,8 +54,8 @@ module.exports = (env) => {
     plugins: [
       new webpack.DefinePlugin({
         PRODUCTION: JSON.stringify(true),
-        VERSION: JSON.stringify("5fa3b9"),
-      })
-    ]
+        VERSION: JSON.stringify('5fa3b9'),
+      }),
+    ],
   };
 };

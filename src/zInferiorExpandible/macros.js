@@ -17,17 +17,18 @@ module.exports = [
   },
   { search: '#{RETRACT}',
     // replace: 'https://vcdn.adnxs.com/p/creative-image/e9/c6/3f/7c/e9c63f7c-841c-4eb2-acf2-fa3b3fc36123.gif'
-    replace: 'http://jab.pe/wsaccaco/zInferiorExpandible/Replegado/index.html',
+    replace: './zInferiorExpandible/img/zocalo-1020x45.jpg',
+    // replace: 'http://jab.pe/wsaccaco/zInferiorExpandible/Replegado/index.html',
   },
   { search: '#{RETRACT_SIZE}',
     replace: '1020x45',
   },
   { search: '#{EXPANDED}',
-    // replace: 'https://vcdn.adnxs.com/p/creative-image/e9/c6/3f/7c/e9c63f7c-841c-4eb2-acf2-fa3b3fc36123.gif'
-    replace: 'http://jab.pe/wsaccaco/zInferiorExpandible/Expandido/index.html',
+    replace: './zInferiorExpandible/img/zocalo-1020x210.jpg',
+    // replace: 'http://jab.pe/wsaccaco/zInferiorExpandible/Expandido/index.html',
   },
   { search: '#{EXPANDED_SIZE}',
-    replace: '1020x210',
+      replace: '1020x210',
   },
   { search: '#{BUTTON_CLOSE}',
     replace: 'https://i1.rgstatic.net/ii/profile.image/296447992975371-1447690117410_Q64/Luis_Mejia_Umana.jpg'

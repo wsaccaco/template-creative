@@ -36,6 +36,7 @@ const BUTTON_CLOSE = '#{BUTTON_CLOSE}';
 const BUTTON_CLOSE_SIZE = '#{BUTTON_CLOSE_SIZE}';
 const BUTTON_CLOSE_POSITION = '#{BUTTON_CLOSE_POSITION}';
 
+console.log(MEDIA_URL);
 
 function destroyTargetId() {
   if (window.apntag_targetId) {
@@ -80,7 +81,7 @@ class Ads {
     this.handle();
     this.$closeImage.src = BUTTON_CLOSE;
     this.autoclose();
-    destroyTargetId();
+    // destroyTargetId();
   }
 
   close(){
@@ -89,6 +90,7 @@ class Ads {
 
   autoclose(){
     this.idClose = setTimeout(() => {
+      console.log(this.$itemExpandido);
       this.close();
     }, 8000)
   }
