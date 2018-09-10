@@ -14,6 +14,7 @@ module.exports = (env) => {
       zMovil: './src/zMovil/zMovil.js',
       tomaCanal: './src/TomaCanal/TomaCanal.js',
       zInferiorExpandible: './src/zInferiorExpandible/zInferiorExpandible.js',
+      zInferior: './src/zInferior/zInferior.js',
     },
     output: {
       path: path.resolve(__dirname, 'dist'),

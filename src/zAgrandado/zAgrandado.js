@@ -52,7 +52,7 @@ function getPositionButtom(_position) {
 function destroyTargetId() {
   if (window.apntag_targetId) {
     let targetID = pDocument.querySelector(`#${window.apntag_targetId}`);
-    console.log({targetID})
+
     if (targetID) {
       targetID.setAttribute("data-running", name);
       targetID.innerHTML = '';

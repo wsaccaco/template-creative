@@ -18,6 +18,7 @@
 .cls_toma_canal.cls_right .cls_wrap_link{
     position: fixed;
     transform: translate3d(0, 0, 0);
+    z-index: 2;
 }
 
 .cls_tc main{

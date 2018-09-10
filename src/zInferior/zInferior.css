@@ -1,0 +1,42 @@
+.cls_idcontainer{
+
+}
+
+.cls_wrap{
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    transform: translate3d(0, 100%, 0);
+    transition: transform 300ms ease-in;
+    will-change: transform;
+    z-index: 2147483646;
+}
+
+.cls_wrap iframe{
+    border: 0;
+}
+
+.cls_wrap .cls_zInferior{
+    position: relative;
+}
+
+.cls_wrap .cls_close{
+    position: absolute;
+    display: flex;
+}
+
+
+.cls_wrap .link{
+    display: flex;
+}
+
+.cls_wrap.cls_open{
+    transform: translate3d(0, 0, 0);
+}
+
+.id_style{
+
+}
+
