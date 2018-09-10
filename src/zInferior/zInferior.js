@@ -14,6 +14,7 @@ import {
   id_style
 } from './zInferior.css';
 import {animation_close} from '../zAgrandado/zAgrandado.css';
+import {getExtension} from '../tools/getExtension';
 
 
 let name   = "zInferior";
@@ -44,12 +45,14 @@ const CLICK_URL = '${CLICK_URL}';
 const MEDIA_URL = '${MEDIA_URL}';
 const CREATIVE_WIDTH = '${CREATIVE_WIDTH}';
 const CREATIVE_HEIGHT = '${CREATIVE_HEIGHT}';
+const LANDING = '#{LANDING}';
 const CREATIVE = '#{CREATIVE}';
 const CREATIVE_SIZE = '#{CREATIVE_SIZE}';
 const BUTTON_CLOSE = '#{BUTTON_CLOSE}';
 const BUTTON_CLOSE_SIZE = '#{BUTTON_CLOSE_SIZE}';
 const BUTTON_CLOSE_POSITION = '#{BUTTON_CLOSE_POSITION}';
 
+console.log(MEDIA_URL);
 
 class Ads {
   constructor(props) {
@@ -85,7 +88,8 @@ class Ads {
   }
 
   _transitionend(e) {
-    this.$linkClose.removeEventListener('click', this.__unmount);
+    if (this.$linkClose)
+      this.$linkClose.removeEventListener('click', this.__unmount);
     this.$parentDiv.removeEventListener('transitionend', this._transitionend);
     this.$parentDiv.remove();
     this.unmountIfExists();
@@ -102,7 +106,8 @@ class Ads {
       this.$parentDiv.classList.add(cls_open)
     };
 
-    this.$linkClose.addEventListener('click', this.__unmount.bind(this));
+    if (this.$linkClose)
+      this.$linkClose.addEventListener('click', this.__unmount.bind(this));
 
   }
 
@@ -127,12 +132,13 @@ class Ads {
       height
     });
 
-    console.log($mainContainer)
-
     let innerHTML = `
         <div class='${cls_zInferior}'>
-          ${Close(BUTTON_CLOSE, cls_close, BUTTON_CLOSE_SIZE,  BUTTON_CLOSE_POSITION)}
-          <a href='${setClickUrl(CLICK_URL, MEDIA_URL)}' style="display: flex; " target='_blank'>
+          ${ getExtension(BUTTON_CLOSE) 
+              ? Close(BUTTON_CLOSE, cls_close, BUTTON_CLOSE_SIZE,  BUTTON_CLOSE_POSITION)
+              : ''
+          }
+          <a href='${setClickUrl(CLICK_URL, LANDING)}' style="display: flex; " target='_blank'>
             ${$mainContainer.outerHTML}
           </a>
         </div>

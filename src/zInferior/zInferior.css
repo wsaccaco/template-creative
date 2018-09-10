@@ -16,6 +16,7 @@
 
 .cls_wrap iframe{
     border: 0;
+    pointer-events: none;
 }
 
 .cls_wrap .cls_zInferior{

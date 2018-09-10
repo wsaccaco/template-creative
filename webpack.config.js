@@ -20,6 +20,7 @@ module.exports = (env) => {
       path: path.resolve(__dirname, 'dist'),
       filename: '[name].bundle.js',
     },
+    devtool: false,
     mode: env['run-prod'] ? 'production' : 'development',
     watch: !env['run-prod'],
     module: {
@@ -39,7 +40,12 @@ module.exports = (env) => {
         {
           test: /\.css$/,
           use: [
-            {loader: 'style-loader', options: {attrs: {class: 'gec_appnexus'}}},
+            {
+              loader: 'style-loader',
+              options: {
+                attrs: {class: 'gec_appnexus'}
+              },
+            },
             {
               loader: 'css-loader', options: {
                 modules: true,

@@ -6,6 +6,10 @@ module.exports = [
     search : '${MEDIA_URL}',
     replace : 'http://elcomercio.pe'
   },
+  {
+    search: '#{LANDING}',
+    replace: 'http://elcomercio.pe'
+  },
   { search: '${CLICK_URL}',
     replace: 'https://nym1-ib.adnxs.com/click?AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACF3XVbAAAAAAEAAAAkIQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgIAAAAAAAEAfgJPrAAAAAA./bn=0/test=1/clickenc=https%3A%2F%2Fdiariocorreo.pe%2F'
   },
@@ -25,7 +29,7 @@ module.exports = [
     replace : '980x90'
   },
   { search: '#{BUTTON_CLOSE}',
-    replace: 'https://www.shareicon.net/data/32x32/2016/08/18/809313_close_512x512.png'
+    replace: ''
   },
   {
     search :'#{BUTTON_CLOSE_SIZE}',
