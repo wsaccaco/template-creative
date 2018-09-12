@@ -14,11 +14,18 @@
     display: flex;
 }
 
-.cls_toma_canal.cls_left .cls_wrap_link,
-.cls_toma_canal.cls_right .cls_wrap_link{
+main .cls_toma_canal.cls_left .cls_wrap_link,
+main .cls_toma_canal.cls_right .cls_wrap_link{
     position: fixed;
-    transform: translate3d(0, 0, 0);
     z-index: 2;
+}
+
+main .cls_toma_canal.cls_left .cls_wrap_link{
+    transform: translate3d(-100%, 0, 0);
+}
+
+main .cls_toma_canal.cls_right .cls_wrap_link{
+    transform: translate3d(0, 0, 0);
 }
 
 .cls_tc main{
@@ -37,7 +44,7 @@
 }
 
 main .cls_toma_canal.cls_left .cls_link.cls_loaded{
-    transform: translate3d(-100%, 0, 0);
+    /*transform: translate3d(-100%, 0, 0);*/
 }
 
 .cls_toma_canal.cls_left .cls_link.cls_loaded{
@@ -66,9 +73,9 @@ main .cls_toma_canal.cls_left .cls_link.cls_loaded{
 }
 
 main .cls_toma_canal.cls_right .cls_link.cls_loaded{
-    transform: translate3d(0, 0, 0);
+    /*transform: translate3d(0, 0, 0);*/
 }
 
 .cls_toma_canal.cls_right .cls_link.cls_loaded{
-    transform: translate3d(-100%, 0, 0);
+    transform: translate3d(0, 0, 0);
 }
