@@ -30,7 +30,8 @@ module.exports = [
       replace: '600x600',
   },
   { search: '#{BUTTON_CLOSE}',
-    replace: 'https://www.shareicon.net/data/32x32/2016/08/18/809313_close_512x512.png'
+    replace: '',
+    // replace: 'https://www.shareicon.net/data/32x32/2016/08/18/809313_close_512x512.png'
   },
   {
     search :'#{BUTTON_CLOSE_SIZE}',

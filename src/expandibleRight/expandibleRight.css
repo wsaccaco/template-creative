@@ -60,17 +60,17 @@
 .cls_wrap .cls_expandido{
     display: flex;
     transform: translate3d(0, 0 , 0);
-    transition: transform 350ms ease-in, opacity 300ms ease-in;
+    transition: transform 300ms ease-in, opacity 300ms ease-in;
 }
 
 .cls_wrap.csl_hidden .cls_expandido{
     opacity: 0;
-    transform: translate3d(100%, 0 , 0);
+    transform: translate3d(5%, 0 , 0);
     pointer-events: none;
 }
 
 .cls_wrap .cls_replegado{
-    transform: translate3d(20%, 0, 0);
+    transform: translate3d(10%, 0, 0);
     opacity: 0;
     transition: transform 350ms ease-in, opacity 350ms;
 }

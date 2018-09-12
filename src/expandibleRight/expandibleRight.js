@@ -3,6 +3,7 @@ import {createTypeElement} from '../tools/createTypeElement';
 import {setClickUrl} from '../tools/setClickUrl';
 import {getExtension} from '../tools/getExtension';
 import {createFragment} from '../tools/createFragment'
+import {Close} from '../tools/Close'
 import {
   cls_zinferiorE,
   cls_wrap,
@@ -65,7 +66,7 @@ function removeStyles() {
 class Ads {
   constructor(props) {
     this.withButton = getExtension(BUTTON_CLOSE);
-    this.targetID = pDocument.querySelector(`#${window.apntag_targetId}`);
+    this.targetID = pDocument.querySelector(`#${window.apntag_targetId}`) || pDocument.body;
     this.init();
   }
 
@@ -83,7 +84,7 @@ class Ads {
 
   didMount() {
     this.handle();
-    this.$closeImage.src = BUTTON_CLOSE;
+    // this.$closeImage.src = BUTTON_CLOSE;
     pDocument.body.classList.add(cls_overflow);
     // destroyTargetId();
   }
@@ -116,7 +117,8 @@ class Ads {
 
   _selectores(){
     this.$linkClose = this.$parentDiv.querySelector(`.${cls_close}`);
-    this.$closeImage = this.$linkClose.querySelector(`img`);
+    if(this.$linkClose)
+      this.$closeImage = this.$linkClose.querySelector(`img`);
     this.$itemReplegado = this.$parentDiv.querySelector(`.${cls_replegado}`);
     this.$itemExpandido = this.$parentDiv.querySelector(`.${cls_expandido}`);
     this.$expandido = this.$itemExpandido.querySelector(`.${cls_container_expandido}`)
@@ -133,10 +135,17 @@ class Ads {
   }
 
   handle(){
+
+    if(EVENT_OPEN.toString() === "mouseover"){
+      this.$itemExpandido.addEventListener('mouseout', this._close.bind(this), false);
+    }
+
     this.$itemReplegado.addEventListener(EVENT_OPEN, this._open.bind(this));
-    if(EVENT_OPEN === "mouseover")
-      this.$itemExpandido.addEventListener('mouseout', this._close.bind(this));
-    this.$linkClose.addEventListener('click', this._close.bind(this));
+
+    if(this.$linkClose){
+      this.$linkClose.addEventListener('click', this._close.bind(this));
+    }
+
     this.$expandido.onload = () => {
       this.$parentDiv.classList.add(cls_loaded)
     }
@@ -178,7 +187,10 @@ class Ads {
             ${$mainRetract.outerHTML}
         </div>
         <div class='${cls_item} ${cls_expandido}'>
-        ${this.withButton ? this.makeButtonClose() : ''}
+        
+        ${ getExtension(BUTTON_CLOSE)
+      ? Close(BUTTON_CLOSE, cls_close, BUTTON_CLOSE_SIZE,  BUTTON_CLOSE_POSITION)
+      : ''}
         <a href='${setClickUrl(CLICK_URL, LANDING)}' class="${cls_link}" target='_blank'>
           ${$mainExpanded.outerHTML}
         </a>  
