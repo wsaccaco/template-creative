@@ -122,7 +122,6 @@ class Ads {
 
   mount() {
     this.makeBase();
-    console.log('a')
   }
 
   mainContainer(landing, style = {}, onLoad = () => {}) {
