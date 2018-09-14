@@ -3,7 +3,8 @@ import {createTypeElement} from '../tools/createTypeElement';
 import {setClickUrl} from '../tools/setClickUrl';
 import {getExtension} from '../tools/getExtension';
 import {createFragment} from '../tools/createFragment'
-import {Close} from '../tools/Close'
+import {Close, Button} from '../tools/Close'
+
 import {
   cls_zinferiorE,
   cls_wrap,
@@ -17,9 +18,10 @@ import {
   cls_close,
   id_style,
   cls_overflow,
-  cls_placement
+  cls_placement,
+  cls_open,
+  cls_link
 } from './expandibleTop.css';
-import {cls_link, id_container} from '../TomaCanal/TomaCanal.css';
 
 let pDocument = document.body.ownerDocument.defaultView.parent.document;
 
@@ -38,6 +40,10 @@ const LANDING = '#{LANDING}';
 const BUTTON_CLOSE = '#{BUTTON_CLOSE}';
 const BUTTON_CLOSE_SIZE = '#{BUTTON_CLOSE_SIZE}';
 const BUTTON_CLOSE_POSITION = '#{BUTTON_CLOSE_POSITION}';
+
+const BUTTON_EXPANDED = '#{BUTTON_EXPANDED}';
+const BUTTON_EXPANDED_SIZE = '#{BUTTON_EXPANDED_SIZE}';
+const BUTTON_EXPANDED_POSITION = '#{BUTTON_EXPANDED_POSITION}';
 
 console.log(MEDIA_URL);
 
@@ -117,11 +123,13 @@ class Ads {
 
   _selectores(){
     this.$linkClose = this.$parentDiv.querySelector(`.${cls_close}`);
-    if(this.$linkClose)
-      this.$closeImage = this.$linkClose.querySelector(`img`);
+    this.$linkOpen = this.$parentDiv.querySelector(`.${cls_open}`);
     this.$itemReplegado = this.$parentDiv.querySelector(`.${cls_replegado}`);
     this.$itemExpandido = this.$parentDiv.querySelector(`.${cls_expandido}`);
     this.$expandido = this.$itemExpandido.querySelector(`.${cls_container_expandido}`)
+
+    if(this.$linkClose)
+      this.$closeImage = this.$linkClose.querySelector(`img`);
   }
 
   _open(e) {
@@ -140,11 +148,13 @@ class Ads {
       this.$itemExpandido.addEventListener('mouseout', this._close.bind(this), false);
     }
 
-    this.$itemReplegado.addEventListener(EVENT_OPEN, this._open.bind(this));
+    // this.$itemReplegado.addEventListener(EVENT_OPEN, this._open.bind(this));
 
     if(this.$linkClose){
       this.$linkClose.addEventListener('click', this._close.bind(this));
     }
+
+    this.$linkOpen.addEventListener(EVENT_OPEN, this._open.bind(this));
 
     this.$expandido.onload = () => {
       this.$parentDiv.classList.add(cls_loaded)
@@ -159,6 +169,12 @@ class Ads {
     Object.assign(mainContainer.style, style);
     mainContainer.onload = () => onLoad(mainContainer);
     return mainContainer;
+  }
+
+  _Button(urlIcon, className, size, position){
+    return getExtension(urlIcon)
+      ? Close(urlIcon, className, size,  position)
+      : ''
   }
 
   makeBase() {
@@ -184,16 +200,17 @@ class Ads {
     let innerHTML = `
       <div style="width: ${_width_retract}px; height: ${_height_retract}px">
         <div class='${cls_item} ${cls_replegado}'>
+          ${ this._Button(BUTTON_EXPANDED, `${cls_open} ${cls_link}`, BUTTON_EXPANDED_SIZE,  BUTTON_EXPANDED_POSITION) }
+          <a href='${setClickUrl(CLICK_URL, LANDING)}' class="${cls_link}" target='_blank'>
             ${$mainRetract.outerHTML}
+          </a>  
         </div>
-        <div class='${cls_item} ${cls_expandido}'>
         
-        ${ getExtension(BUTTON_CLOSE)
-      ? Close(BUTTON_CLOSE, cls_close, BUTTON_CLOSE_SIZE,  BUTTON_CLOSE_POSITION)
-      : ''}
-        <a href='${setClickUrl(CLICK_URL, LANDING)}' class="${cls_link}" target='_blank'>
-          ${$mainExpanded.outerHTML}
-        </a>  
+        <div class='${cls_item} ${cls_expandido}'>
+          ${ this._Button(BUTTON_CLOSE, cls_close, BUTTON_CLOSE_SIZE,  BUTTON_CLOSE_POSITION) }
+          <a href='${setClickUrl(CLICK_URL, LANDING)}' class="${cls_link}" target='_blank'>
+            ${$mainExpanded.outerHTML}
+          </a>  
         </div>
       </div>
     `;

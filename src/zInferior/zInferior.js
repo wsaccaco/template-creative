@@ -125,6 +125,7 @@ class Ads {
       class: cls_wrap,
     });
 
+
     let [width, height] = toPixel(CREATIVE_SIZE);
 
     let $mainContainer = this.mainContainer(CREATIVE, {

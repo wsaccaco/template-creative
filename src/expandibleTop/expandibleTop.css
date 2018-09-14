@@ -22,6 +22,10 @@
     display: flex;
 }
 
+.cls_replegado .cls_open{
+    position: absolute;
+}
+
 .cls_expandido .cls_close{
     position: absolute;
     background: none;
@@ -41,7 +45,7 @@
 
 
 .cls_container_replegado {
-
+    pointer-events: none;
 }
 
 .cls_container_expandido {
@@ -65,12 +69,12 @@
 
 .cls_wrap.csl_hidden .cls_expandido{
     opacity: 0;
-    transform: translate3d(5%, 0 , 0);
+    transform: translate3d(0, -5%, 0);
     pointer-events: none;
 }
 
 .cls_wrap .cls_replegado{
-    transform: translate3d(10%, 0, 0);
+    transform: translate3d(0, -10%, 0);
     opacity: 0;
     transition: transform 350ms ease-in, opacity 350ms;
 }
@@ -89,3 +93,6 @@
     display: flex;
 }
 
+.cls_link{
+    display: flex;
+}
