@@ -17,17 +17,17 @@ module.exports = [
   },
   { search: '#{RETRACT}',
     // replace: './expandibleTop/img/replegado.jpg',
-    replace: 'https://jab.pe/wsaccaco/zInferiorExpandible/Replegado/index.html',
+    replace: 'https://jab.pe/wsaccaco/expandibleTop/contraido/index.html',
   },
   { search: '#{RETRACT_SIZE}',
-    replace: '1020x45',
+    replace: '980x180',
   },
   { search: '#{EXPANDED}',
     // replace: './expandibleTop/img/expandido.gif',
-    replace: 'https://jab.pe/wsaccaco/zInferiorExpandible/Expandido/index.html',
+    replace: 'https://jab.pe/wsaccaco/expandibleTop/expandido/index.html',
   },
   { search: '#{EXPANDED_SIZE}',
-      replace: '1020x210',
+      replace: '980x400',
   },
   { search: '#{BUTTON_EXPANDED}',
     // replace: '',
@@ -42,8 +42,8 @@ module.exports = [
     replace: '5x5'
   },
   { search: '#{BUTTON_CLOSE}',
-    // replace: '',
-    replace: 'https://www.shareicon.net/data/32x32/2016/08/18/809313_close_512x512.png'
+    replace: '',
+    // replace: 'https://www.shareicon.net/data/32x32/2016/08/18/809313_close_512x512.png'
   },
   {
     search :'#{BUTTON_CLOSE_SIZE}',

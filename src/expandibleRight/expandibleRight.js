@@ -17,7 +17,8 @@ import {
   cls_close,
   id_style,
   cls_overflow,
-  cls_placement
+  cls_placement,
+  pointer_disable
 } from './expandibleRight.css';
 import {cls_link, id_container} from '../TomaCanal/TomaCanal.css';
 
@@ -66,6 +67,7 @@ function removeStyles() {
 class Ads {
   constructor(props) {
     this.withButton = getExtension(BUTTON_CLOSE);
+    this.$frameElement = window.frameElement;
     this.targetID = pDocument.querySelector(`#${window.apntag_targetId}`) || pDocument.body;
     this.init();
   }
@@ -76,9 +78,17 @@ class Ads {
     this.didMount();
   }
 
+  _hiddeFrame(){
+    if(this.$frameElement){
+      this.$frameElement.setAttribute("width", 0);
+      this.$frameElement.setAttribute("height", 0)
+    }
+  }
+
   willMount() {
     this.targetID.classList.add(cls_placement);
     this.unmountIfExists();
+    this._hiddeFrame();
     this.copyStyles();
   }
 
@@ -89,20 +99,16 @@ class Ads {
     // destroyTargetId();
   }
 
-  _willTransition(){
-    this.$parentDiv.classList.remove(cls_overflow)
-  }
-
-  _transitionendClose(){
+  _handleTransition(){
 
     let _didTransition = (e) => {
-      if(e.propertyName === "transform"){
-        this.$itemExpandido.removeEventListener("transitionend", _didTransition);
-        this.$parentDiv.classList.add(cls_overflow);
+
+      if(e.propertyName === "transform" && this.$parentDiv.classList.contains(csl_hidden)){
+        this.$itemReplegado.classList.remove(pointer_disable);
       }
     };
 
-    this.$itemExpandido.addEventListener("transitionend", _didTransition, false)
+    this.$itemReplegado.addEventListener("transitionend", _didTransition, false)
   }
 
   close(){
@@ -127,6 +133,7 @@ class Ads {
   _open(e) {
     e.preventDefault();
     // this._willTransition();
+    this.$itemReplegado.classList.add(pointer_disable);
     this.$parentDiv.classList.remove(csl_hidden);
   }
 
@@ -141,6 +148,7 @@ class Ads {
     }
 
     this.$itemReplegado.addEventListener(EVENT_OPEN, this._open.bind(this));
+    this._handleTransition();
 
     if(this.$linkClose){
       this.$linkClose.addEventListener('click', this._close.bind(this));
@@ -219,6 +227,7 @@ class Ads {
     if(!contentAds) return false;
     contentAds.remove();
     removeStyles();
+    this.targetID.classList.remove(cls_placement);
     targetID.removeAttribute("data-running");
   }
 

@@ -198,7 +198,7 @@ class Ads {
 
 
     let innerHTML = `
-      <div style="width: ${_width_retract}px; height: ${_height_retract}px">
+      <div style="width: ${_width_retract}px; height: ${_height_retract}px; position: relative">
         <div class='${cls_item} ${cls_replegado}'>
           ${ this._Button(BUTTON_EXPANDED, `${cls_open} ${cls_link}`, BUTTON_EXPANDED_SIZE,  BUTTON_EXPANDED_POSITION) }
           <a href='${setClickUrl(CLICK_URL, LANDING)}' class="${cls_link}" target='_blank'>

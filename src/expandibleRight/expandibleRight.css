@@ -3,7 +3,7 @@
     justify-content: center;
     width: 100%;
     will-change: transform;
-    z-index: 2147483646;
+    z-index: 9;
     transform: scale(0.5);
     opacity: 0;
     transition: transform 450ms ease-out, opacity 450ms ease-out;
@@ -69,6 +69,10 @@
     pointer-events: none;
 }
 
+.cls_wrap .cls_replegado.pointer_disable{
+    pointer-events: none;
+}
+
 .cls_wrap .cls_replegado{
     transform: translate3d(10%, 0, 0);
     opacity: 0;
@@ -87,5 +91,6 @@
 
 .cls_placement{
     display: flex;
+    overflow: initial;
 }
 

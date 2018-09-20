@@ -17,6 +17,7 @@ module.exports = (env) => {
       zInferior: './src/zInferior/zInferior.js',
       expandibleRight: './src/expandibleRight/expandibleRight.js',
       expandibleTop: './src/expandibleTop/expandibleTop.js',
+      principal: './src/principal/principal.js',
     },
     output: {
       path: path.resolve(__dirname, 'dist'),

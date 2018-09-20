@@ -1,0 +1,46 @@
+.cls_wrap{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    will-change: transform;
+    z-index: 2147483646;
+    transform: scale(0.5);
+    opacity: 0;
+    transition: transform 450ms ease-out, opacity 450ms ease-out;
+}
+
+.cls_item{
+    position: relative;
+}
+
+.cls_close{
+    position: absolute;
+}
+
+.cls_link{
+    display: flex;
+}
+
+.cls_container_media {
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+}
+
+.cls_loaded{
+    transform: scale(1);
+    opacity: 1;
+}
+
+.cls_wrap iframe{
+    border: 0;
+    pointer-events: none;
+}
+
+.cls_placement{
+    display: flex;
+}
+
+.cls_link{
+    display: flex;
+}
