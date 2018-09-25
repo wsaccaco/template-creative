@@ -7,7 +7,8 @@ export function createTypeElement(url, attr = {}) {
   let nodo;
   switch (extension){
     case "html":
-      nodo = createElement("iframe", attr);
+      let _attr = Object.assign({marginwidth: 0, marginheight:0}, attr);
+      nodo = createElement("iframe", _attr);
       nodo.src = url;
       return nodo;
     case "jpg":

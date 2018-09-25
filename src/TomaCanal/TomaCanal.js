@@ -23,7 +23,8 @@ import {
   cls_loaded,
   cls_link,
   cls_tc,
-  cls_wrap_link
+  cls_wrap_link,
+  fly
 } from './TomaCanal.css';
 
 let pDocument = document.body.ownerDocument.defaultView.parent.document;
@@ -104,7 +105,7 @@ class Ads {
   init() {
     this.willMount();
     this.mount();
-    // this.didMount();
+    this.didMount();
   }
 
   willMount() {
@@ -117,7 +118,26 @@ class Ads {
   }
 
   didMount() {
+    this.handle();
+  }
 
+  __scrollable(top_height){
+    return () => {
+      let {y: _TopY} = window.frameElement.getBoundingClientRect();
+      return _TopY + +top_height <  +top_height/2
+    }
+  }
+
+  handle(){
+    let [top_width, top_height] = MEDIA_SIZE_TOP.split('x');
+    let _scrollable = this.__scrollable(top_height);
+    pDocument.addEventListener("scroll", () => {
+      if(_scrollable()){
+        pDocument.body.classList.add(fly);
+      }else{
+        pDocument.body.classList.remove(fly);
+      }
+    });
   }
 
   mount() {

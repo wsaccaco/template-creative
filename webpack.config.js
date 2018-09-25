@@ -18,6 +18,7 @@ module.exports = (env) => {
       expandibleRight: './src/expandibleRight/expandibleRight.js',
       expandibleTop: './src/expandibleTop/expandibleTop.js',
       principal: './src/principal/principal.js',
+      folding: './src/folding/folding.js',
     },
     output: {
       path: path.resolve(__dirname, 'dist'),

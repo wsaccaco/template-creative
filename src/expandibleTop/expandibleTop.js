@@ -92,23 +92,7 @@ class Ads {
     this.handle();
     // this.$closeImage.src = BUTTON_CLOSE;
     pDocument.body.classList.add(cls_overflow);
-    // destroyTargetId();
-  }
-
-  _willTransition(){
-    this.$parentDiv.classList.remove(cls_overflow)
-  }
-
-  _transitionendClose(){
-
-    let _didTransition = (e) => {
-      if(e.propertyName === "transform"){
-        this.$itemExpandido.removeEventListener("transitionend", _didTransition);
-        this.$parentDiv.classList.add(cls_overflow);
-      }
-    };
-
-    this.$itemExpandido.addEventListener("transitionend", _didTransition, false)
+    this.autoclose();
   }
 
   close(){
@@ -140,6 +124,12 @@ class Ads {
 
   _close(){
     this.close();
+  }
+
+  autoclose(){
+    this.idClose = setTimeout(() => {
+      this.close();
+    }, 8000)
   }
 
   handle(){
@@ -180,7 +170,7 @@ class Ads {
   makeBase() {
     this.$parentDiv = createElement('div', {
       id: `content_${window.apntag_targetId}`,
-      class: `${cls_wrap} ${csl_hidden}`,
+      class: `${cls_wrap}`,
     });
 
     let [_width_retract, _height_retract] = RETRACT_SIZE.split("x");
@@ -218,16 +208,6 @@ class Ads {
     this.$parentDiv.appendChild(createFragment(innerHTML));
 
     this.targetID.appendChild(this.$parentDiv);
-  }
-
-  makeButtonClose(){
-    let [_width, _height] = BUTTON_CLOSE_SIZE.split("x");
-    let [top, right] = BUTTON_CLOSE_POSITION.split("x");
-    return `
-        <a class='${cls_close}' style="top: ${top.concat('px')}; right: ${right.concat('px')}">
-            <img style="width: ${_width.concat('px')}; height: ${_height.concat('px')}" />
-        </a>
-    `;
   }
 
   unmountIfExists(){

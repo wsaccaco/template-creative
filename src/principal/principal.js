@@ -15,8 +15,8 @@ import {
   cls_link
 } from './principal.css';
 
-
-let pDocument = document.body.ownerDocument.defaultView.parent.document;
+let pWindow = document.body.ownerDocument.defaultView.parent;
+let pDocument = pWindow.document;
 
 let localStyles = document.querySelectorAll('style.gec_appnexus');
 let ListStyles = Array.prototype.slice.call(localStyles);
@@ -56,7 +56,6 @@ class Ads {
     this.targetID = pDocument.querySelector(`#${window.apntag_targetId}`) || pDocument.body;
     this.$frameElement = window.frameElement;
     this.width = `${pDocument.documentElement.clientWidth}px`;
-    this.height = this.width;
     this.init();
   }
 
@@ -86,17 +85,32 @@ class Ads {
     this.$mainMedia = document.querySelector(`.${cls_container_media}`);
   }
 
+  _clientWidth(){
+    return `${Math.min(this.targetID.getBoundingClientRect().width, 411)}px`
+  }
+
   _sizeFrame(){
+
     if(this.$frameElement){
-      this.$frameElement.setAttribute("width", this.width);
-      this.$frameElement.setAttribute("height", this.height)
+      this.$frameElement.setAttribute("width", this._clientWidth());
+      this.$frameElement.setAttribute("height", this._clientWidth())
+    }
+    if(this.$mainMedia){
+      this.$mainMedia.style.width = this._clientWidth();
+      this.$mainMedia.style.height = this._clientWidth();
     }
   }
 
   handle(){
     this.$mainMedia.onload = () => {
       this.$parentDiv.classList.add(cls_loaded)
-    }
+    };
+
+    pWindow.addEventListener("resize", () => {
+      setTimeout(() => {
+        this._sizeFrame();
+      } )
+    });
   }
 
   mainContainer(landing, classname = '', style = {}, onLoad = () => {}) {
@@ -121,8 +135,8 @@ class Ads {
     });
 
     let $mainMedia = this.mainContainer(MEDIA, cls_container_media, {
-      width: this.width,
-      height: this.height
+      width: this._clientWidth(),
+      height: this._clientWidth()
     });
 
     let innerHTML = `

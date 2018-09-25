@@ -34,7 +34,7 @@ main .cls_toma_canal.cls_right .cls_wrap_link{
 
 .cls_toma_canal.cls_left{
     position: absolute;
-    top: 48px;
+    top: 0;
     left: 0;
 }
 
@@ -63,7 +63,7 @@ main .cls_toma_canal.cls_left .cls_link.cls_loaded{
 
 .cls_toma_canal.cls_right{
     position: absolute;
-    top: 48px;
+    top: 0;
     right: 0;
 }
 
@@ -76,6 +76,15 @@ main .cls_toma_canal.cls_right .cls_link.cls_loaded{
     /*transform: translate3d(0, 0, 0);*/
 }
 
-.cls_toma_canal.cls_right .cls_link.cls_loaded{
+.cls_toma_canal.cls_right .cls_link.cls_loaded,
+.cls_toma_canal.cls_left .cls_link.cls_loaded{
     transform: translate3d(0, 0, 0);
+    transition: transform 300ms ease-in-out;
+}
+
+body.fly .cls_toma_canal.cls_right .cls_link{
+    transform: translate3d( 0, 45px, 0);
+}
+body.fly .cls_toma_canal.cls_left .cls_link{
+    transform: translate3d(0 , 45px, 0);
 }

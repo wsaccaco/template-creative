@@ -18,11 +18,13 @@ module.exports = [
     // replace: '65'
   },
   { search: '#{IMAGE_SMALL}',
-    replace : 'https://dummyimage.com/320x50/000/fff&text=Probando+texto.png',
+    // replace : 'https://dummyimage.com/320x50/000/fff&text=Probando+texto.png',
+    replace: 'https://d2g037f9e082nm.cloudfront.net/creativos/Zocalofijo_414x65/index.html',
     // replace: 'http://jab.pe/wsaccaco/zmovil/index.html'
   },
   { search: '#{IMAGE_LARGE}',
-    replace : 'https://dummyimage.com/414x60/000/fff&text=Probando+texto.png'
+    // replace : 'https://dummyimage.com/414x60/000/fff&text=Probando+texto.png'
+    replace: 'https://d2g037f9e082nm.cloudfront.net/creativos/Zocalofijo_414x65/index.html',
     // replace: 'http://jab.pe/wsaccaco/zmovil/index.html'
   }
 ];

@@ -22,16 +22,31 @@
     display: flex;
 }
 
-.cls_replegado .cls_open{
-    position: absolute;
-}
-
 .cls_expandido .cls_close{
     position: absolute;
     background: none;
     border: 0;
     right: 0;
     top: 0;
+}
+
+.cls_piece{
+    display: flex;
+    float: left;
+    opacity: 0;
+    /*transform: translate3d(50px, 0, 0);*/
+    transform: scaleX(0);
+    transform-origin: 100%;
+}
+
+.cls_piece.transition{
+    transition: transform 250ms ease-in-out, opacity 250ms ease-in-out;
+}
+
+.cls_piece.transition.animate{
+    /*transform: translate3d(0, 0, 0);*/
+    transform: scaleX(1);
+    opacity: 1;
 }
 
 .cls_expandido .cls_close:active,
@@ -45,11 +60,11 @@
 
 
 .cls_container_replegado {
-    pointer-events: none;
+
 }
 
-.cls_container_expandido {
-
+.cls_container_expandido.patch .transition.animate{
+    transform: initial;
 }
 
 .cls_loaded{
@@ -69,12 +84,16 @@
 
 .cls_wrap.csl_hidden .cls_expandido{
     opacity: 0;
-    transform: translate3d(0, -5%, 0);
+    transform: translate3d(5%, 0 , 0);
+    pointer-events: none;
+}
+
+.cls_wrap .cls_replegado.pointer_disable{
     pointer-events: none;
 }
 
 .cls_wrap .cls_replegado{
-    transform: translate3d(0, -10%, 0);
+    transform: translate3d(10%, 0, 0);
     opacity: 0;
     transition: transform 350ms ease-in, opacity 350ms;
 }
@@ -94,6 +113,3 @@
     overflow: initial;
 }
 
-.cls_link{
-    display: flex;
-}

@@ -93,7 +93,7 @@ function destroyTargetId(){
     width: '100%'
   });
 
-  let mainContainer = createTypeElement(IMAGE, {scrolling: 'no'});
+  let mainContainer = createTypeElement(IMAGE, {scrolling: 'no', style: {maxHeight: '65px'}});
 
   Object.assign(mainContainer.style, {
     width: `100%`,
