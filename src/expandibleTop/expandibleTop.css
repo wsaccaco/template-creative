@@ -73,6 +73,10 @@
     pointer-events: none;
 }
 
+.cls_wrap.csl_hidden.cls_ie .cls_expandido{
+    transform: translate3d(0, -100%, 0);
+}
+
 .cls_wrap .cls_replegado{
     transform: translate3d(0, -10%, 0);
     opacity: 0;

@@ -30,6 +30,7 @@ main .cls_toma_canal.cls_right .cls_wrap_link{
 
 .cls_tc main{
     position: relative;
+    display: flex;
 }
 
 .cls_toma_canal.cls_left{
@@ -82,9 +83,7 @@ main .cls_toma_canal.cls_right .cls_link.cls_loaded{
     transition: transform 300ms ease-in-out;
 }
 
-body.fly .cls_toma_canal.cls_right .cls_link{
+body.cls_fly .cls_toma_canal.cls_right .cls_link,
+body.cls_fly .cls_toma_canal.cls_left .cls_link{
     transform: translate3d( 0, 45px, 0);
-}
-body.fly .cls_toma_canal.cls_left .cls_link{
-    transform: translate3d(0 , 45px, 0);
 }

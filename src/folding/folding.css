@@ -24,6 +24,7 @@
 
 .cls_expandido .cls_close{
     position: absolute;
+    z-index: 1;
     background: none;
     border: 0;
     right: 0;
@@ -61,6 +62,11 @@
 
 .cls_container_replegado {
 
+}
+
+.cls_container_expandido{
+    position: absolute;
+    right: 0;
 }
 
 .cls_container_expandido.patch .transition.animate{

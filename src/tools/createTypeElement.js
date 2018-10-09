@@ -15,9 +15,8 @@ export function createTypeElement(url, attr = {}) {
     case "png":
     case "gif":
       nodo = createElement("img", attr);
-      nodo.src = url;
       if (!isIOS) {
-
+        nodo.src = url;
       }
       return nodo;
     // case "mp4":

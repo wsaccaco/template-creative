@@ -4,6 +4,7 @@ import {setClickUrl} from '../tools/setClickUrl';
 import {getExtension} from '../tools/getExtension';
 import {createFragment} from '../tools/createFragment'
 import {Close, Button} from '../tools/Close'
+import {detectIE} from '../tools/isIE';
 
 import {
   cls_zinferiorE,
@@ -20,7 +21,8 @@ import {
   cls_overflow,
   cls_placement,
   cls_open,
-  cls_link
+  cls_link,
+  cls_ie
 } from './expandibleTop.css';
 
 let pDocument = document.body.ownerDocument.defaultView.parent.document;
@@ -98,6 +100,9 @@ class Ads {
   close(){
     // this._transitionendClose();
     this.$parentDiv.classList.add(csl_hidden);
+    if(detectIE()){
+      this.$parentDiv.classList.add(cls_ie);
+    }
   }
 
   mount(){

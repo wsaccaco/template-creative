@@ -36,7 +36,6 @@ const CLICK_URL = '${CLICK_URL}';
 const MEDIA_URL = '${MEDIA_URL}';
 const RETRACT = '#{RETRACT}';
 const RETRACT_SIZE = '#{RETRACT_SIZE}';
-const EXPANDED_SIZE = '#{EXPANDED_SIZE}';
 
 const LANDING = '#{LANDING}';
 
@@ -226,8 +225,7 @@ class Ads {
   _handleTransition(){
 
     let _didTransition = (e) => {
-
-      if(e.propertyName === "transform" && this.$parentDiv.classList.contains(csl_hidden)){
+      if(e.propertyName.indexOf("transform") >= 0 && this.$parentDiv.classList.contains(csl_hidden)){
         this.$itemReplegado.classList.remove(pointer_disable);
       }
     };
@@ -286,7 +284,10 @@ class Ads {
     });
 
     let [_width_retract, _height_retract] = RETRACT_SIZE.split('x');
-    let [_width_expanded, _height_expanded] = EXPANDED_SIZE.split('x');
+    let [t_size_w, t_size_h] = toPixel(PIECE_TOP_SIZE, 'number');
+    let [b_size_w, b_size_h] = toPixel(PIECE_BOTTOM_SIZE, 'number');
+
+    let [_width_expanded, _height_expanded] = [t_size_w * 3, t_size_h + b_size_h];
 
     let $mainRetract = this.mainContainer(RETRACT, cls_container_replegado, {
       width: `${_width_retract}px`,

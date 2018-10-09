@@ -24,7 +24,7 @@ import {
   cls_link,
   cls_tc,
   cls_wrap_link,
-  fly
+  cls_fly
 } from './TomaCanal.css';
 
 let pDocument = document.body.ownerDocument.defaultView.parent.document;
@@ -123,8 +123,8 @@ class Ads {
 
   __scrollable(top_height){
     return () => {
-      let {y: _TopY} = window.frameElement.getBoundingClientRect();
-      return _TopY + +top_height <  +top_height/2
+      let _TopY = window.frameElement.getBoundingClientRect().top;
+      return _TopY + +top_height <  +top_height/2;
     }
   }
 
@@ -132,10 +132,11 @@ class Ads {
     let [top_width, top_height] = MEDIA_SIZE_TOP.split('x');
     let _scrollable = this.__scrollable(top_height);
     pDocument.addEventListener("scroll", () => {
-      if(_scrollable()){
-        pDocument.body.classList.add(fly);
+      let r = _scrollable();
+      if(r){
+        pDocument.body.classList.add(cls_fly);
       }else{
-        pDocument.body.classList.remove(fly);
+        pDocument.body.classList.remove(cls_fly);
       }
     });
   }
@@ -236,9 +237,16 @@ class Ads {
   }
 
   copyStyles() {
+
+    function copy(style, styles){
+      try{style.innerHTML = styles;}
+      catch(error){style.styleSheet.cssText = styles;}
+    }
+
     ListStyles.forEach(style => {
       style.classList.add(id_style);
-      let _style = style.cloneNode(true);
+      let _style = createElement('style', {class: `gec_appnexus ${id_style}`});
+      copy(_style, style.innerHTML);
       pDocument.head.appendChild(_style);
     });
   }
