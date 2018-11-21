@@ -1,8 +1,9 @@
 import {createElement} from '../tools/createElement';
 import {createTypeElement} from '../tools/createTypeElement';
-import {setClickUrl} from '../tools/setClickUrl';
+import {setClickUrl, openWindow} from '../tools/setClickUrl';
 import {getExtension} from '../tools/getExtension';
 import {createFragment} from '../tools/createFragment'
+import {detectIE} from '../tools/isIE'
 import {
   cls_zinferiorE,
   cls_wrap,
@@ -14,9 +15,10 @@ import {
   cls_container_expandido,
   csl_hidde,
   cls_close,
-  id_style
+  id_style,
+  cls_ie,
+  cls_link
 } from './zInferiorExpandible.css';
-import {cls_link, id_container} from '../TomaCanal/TomaCanal.css';
 
 let pDocument = document.body.ownerDocument.defaultView.parent.document;
 
@@ -106,6 +108,7 @@ class Ads {
     this.$itemReplegado = this.$parentDiv.querySelector(`.${cls_replegado}`);
     this.$itemExpandido = this.$parentDiv.querySelector(`.${cls_expandido}`);
     this.$expandido = this.$itemExpandido.querySelector(`.${cls_container_expandido}`)
+    this.$linkLanding = this.$itemExpandido.querySelector(`.${cls_link}`)
   }
 
   expanded(e) {
@@ -121,6 +124,10 @@ class Ads {
 
   handle(){
     this.$itemReplegado.addEventListener(EVENT_OPEN, this.expanded.bind(this));
+    this.$linkLanding.addEventListener('click', (e) => {
+      e.preventDefault();
+      openWindow(CLICK_URL, LANDING)
+    });
     this.$linkClose.addEventListener('click', this._close.bind(this));
     this.$expandido.onload = () => {
       this.$parentDiv.classList.add(cls_loaded)
@@ -140,7 +147,7 @@ class Ads {
   makeBase() {
     this.$parentDiv = createElement('div', {
       id: `content_${window.apntag_targetId}`,
-      class: cls_wrap,
+      class: `${cls_wrap} ${detectIE() && detectIE() <= 11 ? cls_ie : ''}`,
     });
 
     let [_width_retract, _height_retract] = RETRACT_SIZE.split("x");
@@ -156,6 +163,7 @@ class Ads {
       height: `${_height_expanded}px`,
     });
 
+
     let innerHTML = `
       <div style="width: ${_width_retract}px; height: ${_height_retract}px">
         <div class='${cls_item} ${cls_replegado}'>
@@ -163,7 +171,7 @@ class Ads {
         </div>
         <div class='${cls_item} ${cls_expandido}'>
         ${this.withButton ? this.makeButtonClose() : ''}
-        <a href='${setClickUrl(CLICK_URL, LANDING)}' class="${cls_link}" target='_blank'>
+        <a href='#' class="${cls_link}">
           ${$mainExpanded.outerHTML}
         </a>  
         </div>

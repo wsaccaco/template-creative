@@ -11,9 +11,18 @@
     transition: transform 450ms ease-out, opacity 450ms ease-out;
 }
 
+.cls_wrap.cls_ie .cls_replegado{
+    display: block;
+    font-size: 0;
+}
+
 .cls_item{
     position: absolute;
     bottom: 0;
+}
+
+.cls_wrap.cls_ie .cls_link{
+    display: block;
 }
 
 .cls_link{

@@ -30,7 +30,7 @@ main .cls_toma_canal.cls_right .cls_wrap_link{
 
 .cls_tc main{
     position: relative;
-    display: flex;
+    display: block;
 }
 
 .cls_toma_canal.cls_left{

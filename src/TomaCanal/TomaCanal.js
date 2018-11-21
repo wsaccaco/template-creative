@@ -24,8 +24,10 @@ import {
   cls_link,
   cls_tc,
   cls_wrap_link,
-  cls_fly
+  cls_fly,
+  cls_ie
 } from './TomaCanal.css';
+import {detectIE} from '../tools/isIE';
 
 let pDocument = document.body.ownerDocument.defaultView.parent.document;
 
