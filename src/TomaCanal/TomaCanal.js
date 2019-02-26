@@ -181,8 +181,9 @@ class Ads {
       let innerHTML = `
         <div class="${cls_wrap_link}">
           <a href='${setClickUrl(CLICK_URL, landing)}' class="${cls_link}" target='_blank'>
-            ${$mainContainer.outerHTML}
+            ${detectIE() ? '' : $mainContainer.outerHTML}
           </a>
+          ${detectIE() ? $mainContainer.outerHTML : '' }
         </div>
       `;
 
